@@ -59,6 +59,7 @@ make build
 ```
 make run.local
 ```
+Visita http://127.0.0.1:8181/docs para que puedas jugar con el
 
 # Test
 Luego de haber instalado el proyecto con env ejecuta
