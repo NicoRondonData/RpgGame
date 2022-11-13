@@ -1,4 +1,4 @@
-from app.talana_kombat_jrpg.buffer.utils import BufferAbstract, Node, NoDataInBuffer
+from app.talana_kombat_jrpg.buffer.utils import BufferAbstract, NoDataInBuffer, Node
 
 
 class BufferFiFo(BufferAbstract):

@@ -9,11 +9,12 @@ lint.local:
 
 .PHONY: test.local
 test.local:
+	chmod u+r+x test.sh
 	./test.sh
 
 .PHONY: run.local
 run.local:
-	uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+	uvicorn app.main:app --host 0.0.0.0 --port 8181 --reload
 
 ## Build images
 .PHONY: build.base
@@ -90,7 +91,3 @@ rm:
 .PHONY: rmi.base
 rm.base:
 	docker rm -f $(APP_NAME)-base
-
-
-
-

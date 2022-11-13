@@ -3,11 +3,10 @@ from app.talana_kombat_jrpg.fighters.base import Special
 
 
 class Taladoken(Special):
-
-    def __init__(self,  combination, energy ):
+    def __init__(self, combination, energy):
         self.__combination = combination
         self.__energy = energy
-        self.__name = REMUYUKEN_NAME
+        self.__name = TALADOKEN_NAME
 
     @property
     def combination(self):
@@ -26,7 +25,7 @@ class Remuyuken(Special):
     def __init__(self, combination, energy):
         self.__combination = combination
         self.__energy = energy
-        self.__name = TALADOKEN_NAME
+        self.__name = REMUYUKEN_NAME
 
     @property
     def combination(self):
@@ -39,4 +38,3 @@ class Remuyuken(Special):
     @property
     def name(self):
         return self.__name
-

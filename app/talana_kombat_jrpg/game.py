@@ -1,5 +1,5 @@
-from typing import List
 import itertools
+from typing import List
 
 from app.talana_kombat_jrpg.buffer.buffeer import Buffer
 from app.talana_kombat_jrpg.constants import INITIAL_MESSAGE
@@ -13,13 +13,12 @@ class ConstructGameInstructions:
         self.player2 = None
 
     def __values_for_player(self, player: str):
-        print(player)
         player = {
             "attacks": len("".join(self.data[player]["golpes"])),
             "instructions": len("".join(self.data[player]["instructions"])),
             "moves": len("".join(self.data[player]["movimientos"])),
             "player": player,
-            "game_moves": self.data[player]["instructions"]
+            "game_moves": self.data[player]["instructions"],
         }
         return player
 
@@ -33,7 +32,9 @@ class ConstructGameInstructions:
         self.player2 = self.__values_for_player("player2")
         self.player1["enemy"] = "player2"
         self.player2["enemy"] = "player1"
-        players_instructions = self.__get_minimun(self.player1, self.player2, "instructions")
+        players_instructions = self.__get_minimun(
+            self.player1, self.player2, "instructions"
+        )
         players_moves = self.__get_minimun(self.player1, self.player2, "moves")
         players_attacks = self.__get_minimun(self.player1, self.player2, "attacks")
         if self.player1["instructions"] != self.player2["instructions"]:
@@ -48,11 +49,8 @@ class ConstructGameInstructions:
     @classmethod
     def get_instructions(cls, player):
         return [
-            {
-                "player": player["player"],
-                "enemy": player["enemy"],
-                "move": move
-            } for move in player["game_moves"]
+            {"player": player["player"], "enemy": player["enemy"], "move": move}
+            for move in player["game_moves"]
         ]
 
 
@@ -63,8 +61,7 @@ class PlayGame:
         self.__result = None
         self.fighters = fighters
 
-    def __make_buffer(self,
-                      buffer_instruction: str = "FIFO"):
+    def __make_buffer(self, buffer_instruction: str = "FIFO"):
         buffer = Buffer(buffer_instruction)
         for x, y in itertools.zip_longest(self.first_player, self.second_player):
             if x:
@@ -75,7 +72,7 @@ class PlayGame:
 
     def __sort_fighters(self, fighters):
         fighters_sorted = sorted(fighters, key=lambda x: x.energy, reverse=True)
-        return  fighters_sorted
+        return fighters_sorted
 
     def __generate_result(self, buffer):
         principal_fighter = None
@@ -108,7 +105,7 @@ class PlayGame:
             "enemy_energy": enemy_fighter.energy,
             "message": message,
             "winner": fighters_sorted[0].name,
-            "loser": fighters_sorted[-1].name
+            "loser": fighters_sorted[-1].name,
         }
 
     @property

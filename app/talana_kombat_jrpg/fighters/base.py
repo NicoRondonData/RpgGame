@@ -3,7 +3,7 @@ import abc
 
 class Special(abc.ABC):
     @abc.abstractmethod
-    def __init__(self,  combination, energy):
+    def __init__(self, combination, energy):
         pass
 
     @abc.abstractmethod

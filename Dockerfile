@@ -34,7 +34,8 @@ FROM base as tests
 ARG JUNIT_PATH=./reports/junit.xml
 ARG COVERAGE_PATH=./reports/coverage.xml
 
-RUN pip install -r requierements/test.txt
+COPY ./requirements /code/requirement
+RUN pip install --no-cache-dir --upgrade -r /code/requirement/test.txt
 
 COPY . ./
 
@@ -56,4 +57,3 @@ COPY ./app /code/app
 
 
 CMD uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-

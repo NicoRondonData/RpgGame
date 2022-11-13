@@ -9,4 +9,4 @@ echo "Junit Path: $JUNIT_PATH"
 echo "Coverage Path: $COVERAGE_PATH"
 
 echo "Running tests"
-pytest --cov --junitxml="$JUNIT_PATH" && coverage xml -o "$COVERAGE_PATH"
+pytest -s -v --cov --junitxml="$JUNIT_PATH" && coverage xml -o "$COVERAGE_PATH"
