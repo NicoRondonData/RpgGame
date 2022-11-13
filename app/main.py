@@ -3,10 +3,9 @@ from fastapi import FastAPI
 from app.talana_kombat_jrpg.fighters.arnaldor.main import Arnaldor
 from app.talana_kombat_jrpg.fighters.tony.main import Tony
 from app.talana_kombat_jrpg.main import Game
-from app.talana_kombat_jrpg.serializers import GameSchema as GameSchema
 from app.talana_kombat_jrpg.serializers import GameResponseSchema
-from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from app.talana_kombat_jrpg.serializers import GameSchema as GameSchema
+
 app = FastAPI()
 
 
@@ -21,5 +20,4 @@ def insert_item(
     result = game.result
     response = GameResponseSchema(**result)
 
-    return {"data":response}
-
+    return {"data": response}
